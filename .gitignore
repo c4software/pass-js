@@ -4,4 +4,5 @@ node_modules
 coverage/*
 .DS_Store
 .app.yml
+dist/*
 junit.xml
