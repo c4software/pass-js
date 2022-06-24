@@ -1,0 +1,1 @@
+{"version":3,"file":"stream-to-buffer.js","sourceRoot":"","sources":["../../src/lib/stream-to-buffer.ts"],"names":[],"mappings":";;;AAEA;;;;;GAKG;AACI,KAAK,UAAU,cAAc,CAClC,cAAwB;IAExB,MAAM,GAAG,GAAG,EAAE,CAAC;IACf,IAAI,KAAK,EAAE,MAAM,IAAI,IAAI,cAAc,EAAE;QACvC,GAAG,CAAC,IAAI,CAAC,IAAI,CAAC,CAAC;KAChB;IACD,OAAO,MAAM,CAAC,MAAM,CAAC,GAAG,CAAC,CAAC;AAC5B,CAAC;AARD,wCAQC"}
