@@ -27,7 +27,7 @@ export class PassStructure {
         this.style = style;
         if ('boardingPass' in fields && fields.boardingPass) {
           this.transitType = fields.boardingPass.transitType;
-        } else if ('storeCard' in this.fields && 'nfc' in fields) {
+        } else if ('nfc' in fields) {
           // check NFC fields
           this.fields.nfc = new NFCField(fields.nfc);
         }
@@ -64,7 +64,7 @@ export class PassStructure {
     if (!PASS_STYLES.has(v)) throw new TypeError(`Invalid Pass type "${v}"`);
     if (!(v in this.fields)) this.fields[v] = {};
     // Add NFC fields
-    if ('storeCard' in this.fields) this.fields.nfc = new NFCField();
+    this.fields.nfc = new NFCField();
     //   if ('boardingPass' in this.fields && this.fields.boardingPass) this.fields.boardingPass.
   }
 
@@ -111,15 +111,10 @@ export class PassStructure {
    *
    * NFC-enabled pass keys are only supported in passes that contain an Enhanced Passbook/NFC certificate.
    * For more information, contact merchant support at https://developer.apple.com/contact/passkit/.
-   * **Only for storeCards with special Apple approval**
    *
    * @see {@link https://developer.apple.com/library/archive/documentation/UserExperience/Reference/PassKit_Bundle/Chapters/TopLevel.html#//apple_ref/doc/uid/TP40012026-CH2-DontLinkElementID_3}
    */
   get nfc(): NFCField {
-    if (!('storeCard' in this.fields))
-      throw new ReferenceError(
-        `NFC fields only available for storeCard passes, current is ${this.style}`,
-      );
     return this.fields.nfc as NFCField;
   }
 

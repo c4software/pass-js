@@ -39,11 +39,11 @@ export type FieldDescriptor = {
   changeMessage?: string;
   dataDetectorTypes?: DataDetectors[];
 } & (
-  | {
+    | {
       value: string;
       textAlignment?: TextAlignment;
     }
-  | {
+    | {
       value: Date;
       // Date Style Keys
       dateStyle?: DataStyleFormat;
@@ -51,7 +51,7 @@ export type FieldDescriptor = {
       isRelative?: boolean;
       timeStyle?: DataStyleFormat;
     }
-  | {
+    | {
       value: number;
       // Number Style Keys
       currencyCode?: string;
@@ -407,6 +407,7 @@ export type TransitType =
   | 'PKTransitTypeGeneric';
 
 export interface BoardingPass {
+  nfc?: NFCDictionary;
   boardingPass: {
     /**
      * Type of transit.
@@ -417,14 +418,17 @@ export interface BoardingPass {
 
 export interface CouponPass {
   coupon: PassCommonStructure;
+  nfc?: NFCDictionary;
 }
 
 export interface EventTicketPass {
   eventTicket: PassCommonStructure;
+  nfc?: NFCDictionary;
 }
 
 export interface GenericPass {
   generic: PassCommonStructure;
+  nfc?: NFCDictionary;
 }
 
 export interface StoreCardPass {
@@ -448,6 +452,6 @@ export type ApplePass = PassStandardKeys &
   PassWebServiceKeys &
   PassStructureFields;
 
-  export interface Options {
-    allowHttp: boolean
-  }
+export interface Options {
+  allowHttp: boolean
+}
