@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import { promisify } from 'util';
 
 import { Entry, Options, ZipFile, fromBuffer as ZipFromBuffer } from 'yauzl';

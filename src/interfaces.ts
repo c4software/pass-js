@@ -412,7 +412,7 @@ export interface BoardingPass {
     /**
      * Type of transit.
      */
-    transitType: TransitType;
+    transitType?: TransitType;
   } & PassCommonStructure;
 }
 
