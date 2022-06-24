@@ -16,8 +16,7 @@ import { PASS_STYLES } from './constants';
 import { PassStyle, ApplePass, Options } from './interfaces';
 import { PassBase } from './lib/base-pass';
 import { unzipBuffer } from './lib/yazul-promisified';
-import stripJsonComments from 'strip-json-comments';
-
+import stripJsonComments from './lib/strip'
 const {
   HTTP2_HEADER_METHOD,
   HTTP2_HEADER_PATH,

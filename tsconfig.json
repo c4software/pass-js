@@ -23,7 +23,8 @@
     "importHelpers": true,
     "listEmittedFiles": true,
     "outDir": "./dist",
-    "sourceMap": true
+    "sourceMap": true,
+    "allowJs": true
   },
   "include": ["src/index.ts", "./src/@types"],
   "exclude": ["node_modules", "@types"]
