@@ -278,7 +278,7 @@ export class Template extends PassBase {
    *
    * @param {string} pushToken
    */
-  async pushUpdates(pushToken: string): Promise<http2.IncomingHttpHeaders> {
+  async pushUpdates(pushToken: string, payload?: any): Promise<http2.IncomingHttpHeaders> {
     // https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/PassKit_PG/Updating.html
     if (!this.apn || this.apn.destroyed) {
       // creating APN Provider
@@ -334,8 +334,8 @@ export class Template extends PassBase {
       // Wait for response before resolving
       req.once('response', resolve);
 
-      // Post payload (always empty in our case)
-      req.end('{}');
+      // Post payload (empty when updating a pass)
+      req.end(payload ? payload : '{}');
     });
   }
 
