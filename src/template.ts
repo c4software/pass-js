@@ -316,10 +316,24 @@ export class Template extends PassBase {
     return new Promise((resolve, reject) => {
       if (!this.apn || this.apn.destroyed)
         throw new Error('APN was destroyed before connecting');
-      const req = this.apn.request({
+
+      let headers = {
         [HTTP2_HEADER_METHOD]: HTTP2_METHOD_POST,
         [HTTP2_HEADER_PATH]: `/3/device/${encodeURIComponent(pushToken)}`,
-      });
+      }
+
+      // Add headers for push notification if payload is provided
+      if (payload) {
+        headers = {
+          ...headers,
+          'apns-topic': this.passTypeIdentifier || '',
+          'apns-priority': '10',
+          'apns-push-type': 'alert',
+          'apns-expiration': '0',
+        }
+      }
+
+      const req = this.apn.request(headers);
 
       // Cancel request after timeout
       req.setTimeout(5000, () => {
@@ -335,7 +349,7 @@ export class Template extends PassBase {
       req.once('response', resolve);
 
       // Post payload (empty when updating a pass)
-      req.end(payload ? payload : '{}');
+      req.end(payload ? JSON.stringify(payload) : '{}');
     });
   }
 
